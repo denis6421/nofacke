@@ -4,6 +4,7 @@ export interface IProduct {
   _id?: string;
   type: string;
   batch: string;
+  brand: string;
 }
 
 export enum PRODUCT_TYPES {

@@ -11,12 +11,14 @@ const CreateProduct = () => {
   const [country, setCountry] = useState("");
   const [type, setType] = useState("");
   const [batch, setBatch] = useState("");
+  const [brand, setBrand] = useState("");
+
   const [amount, setAmount] = useState(0);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (name && country && type && batch && amount) {
-      const obj = { name, country, type, batch };
+    if (name && country && type && batch && amount && brand) {
+      const obj = { name, country, type, batch, brand };
       const data = handleData(obj, amount);
       postData(apiRoutes.createProduct, data);
     }
@@ -64,6 +66,15 @@ const CreateProduct = () => {
           value={batch}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setBatch(e.target.value)
+          }
+        />
+      </div>
+      <div className="admin-create-section">
+        <p>Brand: </p>
+        <input
+          value={brand}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setBrand(e.target.value)
           }
         />
       </div>

@@ -1,4 +1,7 @@
-import tshirtImg from "../assets/images/products/t-shirt.webp";
-export const images = {
-  tShirt: tshirtImg,
+import { PRODUCT_TYPES } from "./../screens/Product/interfaces/index";
+import shoes from "../assets/images/products/shoes.png";
+export const productImages = {
+  [PRODUCT_TYPES.JEANS]: shoes,
+  [PRODUCT_TYPES.SHOES]: shoes,
+  [PRODUCT_TYPES.WATCH]: shoes,
 };

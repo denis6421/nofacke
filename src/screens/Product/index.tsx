@@ -1,10 +1,12 @@
 import React, { Suspense, useEffect } from "react";
+import Img from "../../components/Img";
+import LoadingHandler from "../../components/LoadingHandler";
 import { apiRoutes } from "../../constans";
-import { images } from "../../constans/images";
+import { productImages } from "../../constans/images";
 import useFetch from "../../hooks/useFetch";
-import Model from "./components/Model";
+import ProductLoader from "./components/ProductLoader";
 import useProductUrl from "./hooks/useProductUrl";
-import { IProduct } from "./interfaces";
+import { IProduct, PRODUCT_TYPES } from "./interfaces";
 
 const Product = () => {
   const [productId] = useProductUrl();
@@ -16,24 +18,31 @@ const Product = () => {
     }
   }, [productId]);
 
-  console.log({ data });
-
-  return data ? (
+  return (
     <div className="product">
-      <h4 className="product-name">Name: {data.name}</h4>
-      <p className="product-id">ID: {data._id}</p>
-      <p className="product-type">Type: {data.type}</p>
-      <p className="product-country">Country: {data.country}</p>
-      <p className="product-batch">Batch: {data.batch}</p>
-      <figure className="product-image">
-        {/* <img src={data.avatar} alt="product" /> */}
-        <Suspense fallback={<div>loading...</div>}>
-          <Model />
-        </Suspense>
-      </figure>
+      <LoadingHandler isLoading={!data} CustomLoader={<ProductLoader />}>
+        <>
+          <Img src={productImages[data?.type as PRODUCT_TYPES]} alt="product" />
+          <div className="product-details">
+            <h4 className="product-details-name">{data?.name}</h4>
+            <div className="product-details-data">
+              <section>
+                <h5>Origin</h5>
+                <p>{data?.country}</p>
+              </section>
+              <section>
+                <h5>Batch</h5>
+                <p>{data?.batch}</p>
+              </section>
+              <section>
+                <h5>Brand</h5>
+                <p>{data?.brand}</p>
+              </section>
+            </div>
+          </div>
+        </>
+      </LoadingHandler>
     </div>
-  ) : (
-    <p>loading...</p>
   );
 };
 

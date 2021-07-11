@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import api from "../services/api";
 
 const usePost = <T>(): [
-  T,
   (url: string, body: any) => void,
+  T,
   boolean,
+
   boolean
 ] => {
   const mountedRef = useRef(true);
@@ -33,7 +34,7 @@ const usePost = <T>(): [
       mountedRef.current = false;
     };
   }, []);
-  return [data, post, error, !data];
+  return [post, data, error, loading];
 };
 
 export default usePost;

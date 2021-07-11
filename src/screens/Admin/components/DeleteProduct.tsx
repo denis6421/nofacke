@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { apiRoutes } from "../../../constans";
-import useFetch from "../../../hooks/useFetch";
 import usePost from "../../../hooks/usePost";
 
 const DeleteProduct = () => {
   const [itemToDelete, setItemToDelete] = useState("");
-  const [data, postData, error, loading] = usePost();
+  const [postData] = usePost();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

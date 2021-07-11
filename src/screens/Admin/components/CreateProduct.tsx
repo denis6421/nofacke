@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { apiRoutes } from "../../../constans";
-import useFetch from "../../../hooks/useFetch";
 import usePost from "../../../hooks/usePost";
 import { IProduct, PRODUCT_TYPES } from "../../Product/interfaces";
 
 const CreateProduct = () => {
-  const [response, postData, error, loading] = usePost();
+  const [postData] = usePost();
 
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");

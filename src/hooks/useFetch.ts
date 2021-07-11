@@ -5,7 +5,6 @@ import api from "../services/api";
 const useFetch = <T>(): [T, (url: string) => void, boolean, boolean] => {
   const mountedRef = useRef(true);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>(null);
 
   const fetchData = async (customUrl?: string) => {
@@ -13,10 +12,8 @@ const useFetch = <T>(): [T, (url: string) => void, boolean, boolean] => {
       return;
     }
     if (!mountedRef.current) return;
-    setLoading(true);
     setError(false);
     const res = await api.get(customUrl);
-    setLoading(false);
     if (!res) {
       setError(true);
     }

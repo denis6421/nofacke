@@ -1,16 +1,17 @@
-import React, { Suspense, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 import Img from "../../components/Img";
 import LoadingHandler from "../../components/LoadingHandler";
 import { apiRoutes } from "../../constans";
 import { productImages } from "../../constans/images";
 import useFetch from "../../hooks/useFetch";
 import ProductLoader from "./components/ProductLoader";
-import useProductUrl from "./hooks/useProductUrl";
+import useProductID from "./hooks/useProductID";
 import { IProduct, PRODUCT_TYPES } from "./interfaces";
 
 const Product = () => {
-  const [productId] = useProductUrl();
-  const [data, fetchData, error, loading] = useFetch<IProduct | null>();
+  const [productId] = useProductID();
+  const [data, fetchData] = useFetch<IProduct | null>();
 
   useEffect(() => {
     if (productId) {

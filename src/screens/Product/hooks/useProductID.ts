@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const useProductUrl = (): [string | null] => {
+const useProductID = (): [string | null] => {
   const [productId, setProductId] = useState<string | null>(null);
   const { id }: any = useParams();
   useEffect(() => {
@@ -14,4 +14,4 @@ const useProductUrl = (): [string | null] => {
   return [productId];
 };
 
-export default useProductUrl;
+export default useProductID;

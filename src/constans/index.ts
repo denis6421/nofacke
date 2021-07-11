@@ -1,8 +1,9 @@
+import { PRODUCT_TYPES } from "./../screens/Product/interfaces/index";
 export const routes = {
   product: "/:id",
 };
 
-const API = "http://localhost:5000";
+const API = "https://nofacke-server.herokuapp.com";
 
 export const apiRoutes = {
   getProduct: `${API}/products/get?id=`,
@@ -11,4 +12,10 @@ export const apiRoutes = {
   deleteProduct: `${API}/products/delete`,
   createMultiple: `${API}/products/createMultiple`,
   getProductsByBatch: `${API}/products/getByBatch`,
+};
+
+export const models = {
+  [PRODUCT_TYPES.JEANS]: "",
+  [PRODUCT_TYPES.SHOES]: "",
+  [PRODUCT_TYPES.WATCH]: "",
 };

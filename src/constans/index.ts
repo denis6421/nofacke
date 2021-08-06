@@ -3,7 +3,8 @@ export const routes = {
   product: "/:id",
 };
 
-const API = "https://nofacke-server.herokuapp.com";
+// const API = "https://nofacke-server.herokuapp.com";
+const API = "http://localhost:5000";
 
 export const apiRoutes = {
   getProduct: `${API}/products/get?id=`,
